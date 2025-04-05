@@ -10,8 +10,6 @@ export function generateStaticParams() {
   }));
 }
 
-export const dynamicParams = false;
-
 export default function ProductPage({ params }: { params: { id: string } }) {
   const product = products.find((p) => p.id === params.id);
 
