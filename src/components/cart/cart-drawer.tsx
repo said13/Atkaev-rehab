@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import { useCart } from '@/context/cart-context'
-import { Button } from '@/components/ui/button'
-import { X, Plus, Minus, ShoppingBag } from 'lucide-react'
-import Link from 'next/link'
-import { useEffect } from 'react'
+import { useCart } from "@/context/cart-context";
+import { Button } from "@/components/ui/button";
+import { X, Plus, Minus, ShoppingBag } from "lucide-react";
+import Link from "next/link";
+import { useEffect } from "react";
 
 export default function CartDrawer() {
   const {
@@ -14,40 +14,41 @@ export default function CartDrawer() {
     removeItem,
     updateQuantity,
     totalItems,
-    totalPrice
-  } = useCart()
+    totalPrice,
+  } = useCart();
 
-  // Close cart when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
-      if (isCartOpen && !target.closest('.cart-drawer') && !target.closest('.cart-toggle')) {
-        toggleCart()
+      const target = e.target as HTMLElement;
+      if (
+        isCartOpen &&
+        !target.closest(".cart-drawer") &&
+        !target.closest(".cart-toggle")
+      ) {
+        toggleCart();
       }
-    }
+    };
 
-    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [isCartOpen, toggleCart])
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isCartOpen, toggleCart]);
 
-  // Prevent scrolling when cart is open
   useEffect(() => {
     if (isCartOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ''
+      document.body.style.overflow = "";
     }
 
     return () => {
-      document.body.style.overflow = ''
-    }
-  }, [isCartOpen])
+      document.body.style.overflow = "";
+    };
+  }, [isCartOpen]);
 
   return (
     <>
-      {/* Cart toggle button */}
       <button
         className="cart-toggle relative p-2 text-black"
         onClick={toggleCart}
@@ -61,12 +62,9 @@ export default function CartDrawer() {
         )}
       </button>
 
-      {/* Cart drawer */}
       {isCartOpen && (
         <div className="fixed inset-0 z-50 bg-black/40">
-          <div
-            className="cart-drawer fixed top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-lg flex flex-col transform transition-transform"
-          >
+          <div className="cart-drawer fixed top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-lg flex flex-col transform transition-transform">
             <div className="flex items-center justify-between p-4 border-b">
               <h2 className="text-lg font-semibold">Корзина</h2>
               <button
@@ -95,7 +93,10 @@ export default function CartDrawer() {
                 <div className="flex-grow overflow-y-auto p-4">
                   <ul className="space-y-4">
                     {items.map((item) => (
-                      <li key={`${item.id}-${item.size}`} className="flex space-x-4 pb-4 border-b">
+                      <li
+                        key={`${item.id}-${item.size}`}
+                        className="flex space-x-4 pb-4 border-b"
+                      >
                         <div className="h-20 w-16 flex-shrink-0 bg-gray-100">
                           <img
                             src={item.image}
@@ -105,18 +106,34 @@ export default function CartDrawer() {
                         </div>
                         <div className="flex-grow">
                           <h3 className="text-sm font-medium">{item.name}</h3>
-                          <p className="text-sm text-gray-500 mb-1">Размер: {item.size}</p>
+                          <p className="text-sm text-gray-500 mb-1">
+                            Размер: {item.size}
+                          </p>
                           <p className="text-sm mb-2">{item.price} ₽</p>
                           <div className="flex items-center space-x-2">
                             <button
-                              onClick={() => updateQuantity(item.id, item.size, item.quantity - 1)}
+                              onClick={() =>
+                                updateQuantity(
+                                  item.id,
+                                  item.size,
+                                  item.quantity - 1,
+                                )
+                              }
                               className="p-1 border border-gray-300 hover:bg-gray-100"
                             >
                               <Minus size={12} />
                             </button>
-                            <span className="w-8 text-center">{item.quantity}</span>
+                            <span className="w-8 text-center">
+                              {item.quantity}
+                            </span>
                             <button
-                              onClick={() => updateQuantity(item.id, item.size, item.quantity + 1)}
+                              onClick={() =>
+                                updateQuantity(
+                                  item.id,
+                                  item.size,
+                                  item.quantity + 1,
+                                )
+                              }
                               className="p-1 border border-gray-300 hover:bg-gray-100"
                             >
                               <Plus size={12} />
@@ -163,5 +180,5 @@ export default function CartDrawer() {
         </div>
       )}
     </>
-  )
+  );
 }

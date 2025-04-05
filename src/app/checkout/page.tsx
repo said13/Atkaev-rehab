@@ -1,54 +1,53 @@
-'use client'
+"use client";
 
-import PageLayout from '@/components/layout/page-layout'
-import { useCart } from '@/context/cart-context'
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import Link from 'next/link'
-import { ChevronLeft, Trash2 } from 'lucide-react'
-import { useRouter } from 'next/navigation'
+import PageLayout from "@/components/layout/page-layout";
+import { useCart } from "@/context/cart-context";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { ChevronLeft, Trash2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-export const dynamic = 'force-static'
+export const dynamic = "force-static";
 
 export default function CheckoutPage() {
-  const { items, removeItem, updateQuantity, totalPrice, clearCart } = useCart()
-  const router = useRouter()
+  const { items, removeItem, updateQuantity, totalPrice, clearCart } =
+    useCart();
+  const router = useRouter();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    postalCode: '',
-    notes: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    postalCode: "",
+    notes: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    // Simulate form submission
     setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSuccess(true)
-      clearCart()
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      clearCart();
 
-      // Redirect to success page after a delay
       setTimeout(() => {
-        router.push('/')
-      }, 3000)
-    }, 1500)
-  }
+        router.push("/");
+      }, 3000);
+    }, 1500);
+  };
 
   if (isSuccess) {
     return (
@@ -57,12 +56,28 @@ export default function CheckoutPage() {
           <div className="boomzi-container max-w-3xl mx-auto">
             <div className="bg-white p-8 text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-8 h-8 text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
-              <h1 className="text-2xl font-semibold mb-4">Заказ успешно оформлен!</h1>
-              <p className="text-gray-600 mb-6">Спасибо за ваш заказ. Мы скоро свяжемся с вами для подтверждения.</p>
+              <h1 className="text-2xl font-semibold mb-4">
+                Заказ успешно оформлен!
+              </h1>
+              <p className="text-gray-600 mb-6">
+                Спасибо за ваш заказ. Мы скоро свяжемся с вами для
+                подтверждения.
+              </p>
               <Link href="/">
                 <Button className="boomzi-button rounded-none">
                   Вернуться на главную
@@ -72,19 +87,19 @@ export default function CheckoutPage() {
           </div>
         </div>
       </PageLayout>
-    )
+    );
   }
 
   if (items.length === 0) {
     return (
       <PageLayout>
-                      <div className="py-12 boomzi-bg min-h-[70vh]">
-
-
+        <div className="py-12 boomzi-bg min-h-[70vh]">
           <div className="boomzi-container max-w-3xl mx-auto">
             <div className="bg-white p-8 text-center">
               <h1 className="text-2xl font-semibold mb-4">Корзина пуста</h1>
-              <p className="text-gray-600 mb-6">Добавьте товары в корзину, чтобы оформить заказ.</p>
+              <p className="text-gray-600 mb-6">
+                Добавьте товары в корзину, чтобы оформить заказ.
+              </p>
               <Link href="/">
                 <Button className="boomzi-button rounded-none">
                   Перейти к покупкам
@@ -94,7 +109,7 @@ export default function CheckoutPage() {
           </div>
         </div>
       </PageLayout>
-    )
+    );
   }
 
   return (
@@ -102,7 +117,10 @@ export default function CheckoutPage() {
       <div className="py-12 boomzi-bg">
         <div className="boomzi-container">
           {/* Back button */}
-          <Link href="/" className="inline-flex items-center text-sm mb-8 hover:opacity-75 transition-opacity">
+          <Link
+            href="/"
+            className="inline-flex items-center text-sm mb-8 hover:opacity-75 transition-opacity"
+          >
             <ChevronLeft size={18} />
             <span>Продолжить покупки</span>
           </Link>
@@ -134,21 +152,35 @@ export default function CheckoutPage() {
                             <Trash2 size={16} />
                           </button>
                         </div>
-                        <p className="text-sm text-gray-500">Размер: {item.size}</p>
+                        <p className="text-sm text-gray-500">
+                          Размер: {item.size}
+                        </p>
                         <div className="flex justify-between items-end mt-2">
                           <div className="flex items-center">
-                            <span className="text-sm mr-2">Кол-во: {item.quantity}</span>
+                            <span className="text-sm mr-2">
+                              Кол-во: {item.quantity}
+                            </span>
                             <select
                               value={item.quantity}
-                              onChange={(e) => updateQuantity(item.id, item.size, Number.parseInt(e.target.value))}
+                              onChange={(e) =>
+                                updateQuantity(
+                                  item.id,
+                                  item.size,
+                                  Number.parseInt(e.target.value),
+                                )
+                              }
                               className="text-sm border p-1"
                             >
                               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                                <option key={num} value={num}>{num}</option>
+                                <option key={num} value={num}>
+                                  {num}
+                                </option>
                               ))}
                             </select>
                           </div>
-                          <p className="text-sm font-medium">{item.price * item.quantity} ₽</p>
+                          <p className="text-sm font-medium">
+                            {item.price * item.quantity} ₽
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -166,11 +198,15 @@ export default function CheckoutPage() {
             {/* Right side - Customer info */}
             <div className="lg:col-span-1">
               <div className="bg-white p-6">
-                <h2 className="text-lg font-medium mb-4">Информация для доставки</h2>
+                <h2 className="text-lg font-medium mb-4">
+                  Информация для доставки
+                </h2>
                 <form onSubmit={handleSubmit}>
                   <div className="space-y-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm mb-1">ФИО *</label>
+                      <label htmlFor="name" className="block text-sm mb-1">
+                        ФИО *
+                      </label>
                       <Input
                         id="name"
                         name="name"
@@ -182,7 +218,9 @@ export default function CheckoutPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm mb-1">Email *</label>
+                      <label htmlFor="email" className="block text-sm mb-1">
+                        Email *
+                      </label>
                       <Input
                         id="email"
                         name="email"
@@ -195,7 +233,9 @@ export default function CheckoutPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="phone" className="block text-sm mb-1">Телефон *</label>
+                      <label htmlFor="phone" className="block text-sm mb-1">
+                        Телефон *
+                      </label>
                       <Input
                         id="phone"
                         name="phone"
@@ -207,7 +247,9 @@ export default function CheckoutPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="address" className="block text-sm mb-1">Адрес *</label>
+                      <label htmlFor="address" className="block text-sm mb-1">
+                        Адрес *
+                      </label>
                       <Input
                         id="address"
                         name="address"
@@ -220,7 +262,9 @@ export default function CheckoutPage() {
 
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="city" className="block text-sm mb-1">Город *</label>
+                        <label htmlFor="city" className="block text-sm mb-1">
+                          Город *
+                        </label>
                         <Input
                           id="city"
                           name="city"
@@ -231,7 +275,12 @@ export default function CheckoutPage() {
                         />
                       </div>
                       <div>
-                        <label htmlFor="postalCode" className="block text-sm mb-1">Индекс *</label>
+                        <label
+                          htmlFor="postalCode"
+                          className="block text-sm mb-1"
+                        >
+                          Индекс *
+                        </label>
                         <Input
                           id="postalCode"
                           name="postalCode"
@@ -244,7 +293,9 @@ export default function CheckoutPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="notes" className="block text-sm mb-1">Примечания</label>
+                      <label htmlFor="notes" className="block text-sm mb-1">
+                        Примечания
+                      </label>
                       <textarea
                         id="notes"
                         name="notes"
@@ -260,7 +311,7 @@ export default function CheckoutPage() {
                       className="boomzi-button rounded-none w-full"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? 'Оформление...' : 'Оформить заказ'}
+                      {isSubmitting ? "Оформление..." : "Оформить заказ"}
                     </Button>
                   </div>
                 </form>
@@ -270,5 +321,5 @@ export default function CheckoutPage() {
         </div>
       </div>
     </PageLayout>
-  )
+  );
 }

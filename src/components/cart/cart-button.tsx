@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import { useCart } from '@/context/cart-context'
-import { ShoppingBag } from 'lucide-react'
+import { useCart } from "@/context/cart-context";
+import { ShoppingBag } from "lucide-react";
 
 export default function CartButton() {
-  const { toggleCart, totalItems } = useCart()
+  const { toggleCart, totalItems } = useCart();
 
   return (
     <button
@@ -19,5 +19,5 @@ export default function CartButton() {
         </span>
       )}
     </button>
-  )
+  );
 }

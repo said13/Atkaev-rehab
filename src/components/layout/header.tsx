@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
-import CartDrawer from '../cart/cart-drawer'
+import Link from "next/link";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import CartDrawer from "../cart/cart-drawer";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className="bg-white py-4 border-b border-gray-100">
@@ -17,42 +17,44 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Desktop navigation */}
         <nav className="hidden md:flex items-center">
           <ul className="flex space-x-8 mr-4">
             <li>
-              <Link href="/about" className="text-sm hover:opacity-70 transition-opacity">
+              <Link
+                href="/about"
+                className="text-sm hover:opacity-70 transition-opacity"
+              >
                 О нас
               </Link>
             </li>
             <li>
-              <Link href="/faq" className="text-sm hover:opacity-70 transition-opacity">
+              <Link
+                href="/faq"
+                className="text-sm hover:opacity-70 transition-opacity"
+              >
                 FAQ
               </Link>
             </li>
             <li>
-              <Link href="/vacancies" className="text-sm hover:opacity-70 transition-opacity">
+              <Link
+                href="/vacancies"
+                className="text-sm hover:opacity-70 transition-opacity"
+              >
                 Вакансии
               </Link>
             </li>
           </ul>
 
-          {/* Cart button */}
           <CartDrawer />
         </nav>
 
-        {/* Mobile menu and cart */}
         <div className="flex items-center md:hidden">
           <CartDrawer />
-          <button
-            className="ml-4"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
+          <button className="ml-4" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile navigation */}
         {isMenuOpen && (
           <div className="absolute top-16 left-0 right-0 bg-white z-40 p-4 border-b border-gray-100 md:hidden">
             <nav>
@@ -90,7 +92,7 @@ const Header = () => {
         )}
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
