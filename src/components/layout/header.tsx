@@ -13,7 +13,7 @@ const Header = () => {
       <div className="boomzi-container flex items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="text-2xl tracking-[2px] font-semibold">
-            B O O M Z I
+            Atkaev REHAB
           </Link>
         </div>
 
