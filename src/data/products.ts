@@ -66,29 +66,5 @@ export const products: Product[] = [
 ];
 
 export const relatedProducts: RelatedProduct[] = [
-  {
-    id: "101",
-    name: 'Чехол "She De Mere" (mini)',
-    price: 1500,
-    image: "https://ext.same-assets.com/615341754/3188720138.jpeg",
-  },
-  {
-    id: "102",
-    name: 'Шарф "Dagger"',
-    price: 900,
-    oldPrice: 1500,
-    image: "https://ext.same-assets.com/615341754/4120106734.jpeg",
-  },
-  {
-    id: "2",
-    name: 'Футболка "Топография NAVY BLUE"',
-    price: 4500,
-    image: "https://ext.same-assets.com/615341754/3835176787.jpeg",
-  },
-  {
-    id: "103",
-    name: 'Наклейка Гелевая "Синтем"',
-    price: 150,
-    image: "https://ext.same-assets.com/615341754/3211665750.jpeg",
-  },
+  
 ];
