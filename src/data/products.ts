@@ -18,41 +18,50 @@ export interface RelatedProduct {
 export const products: Product[] = [
   {
     id: "1",
-    name: 'Футболка "Тайп NAVY BLUE"',
-    price: 4500,
-    images: [
-      "https://ext.same-assets.com/615341754/333363867.jpeg",
-      "https://ext.same-assets.com/615341754/1793383301.jpeg",
-      "https://ext.same-assets.com/615341754/2280773218.jpeg",
-      "https://ext.same-assets.com/615341754/3984744309.jpeg",
-    ],
+    name: "ATK MiniBands Set — 5 Levels",
+    price: 1490,
+    images: ["https://ext.same-assets.com/615341754/333363867.jpeg"],
     description:
-      '"Тайп" теперь и на наших футболках с нового производства в Турции. Мы улучшили футболку используя более качественную и плотную ткань в цвете Navy Blue',
-    details: "Оверсайз\n100% хлопок",
+      "Комплект из 5 латексных мини-резинок с разной степенью нагрузки — от Extra Light до Extra Heavy. Идеально подходит для тренировок дома, в зале или на улице.",
+    details:
+      "Размер: 30 x 5 см\nМатериал: 100% натуральный латекс\nУровни: 5 сопротивлений (4–32 кг)",
   },
   {
     id: "2",
-    name: 'Футболка "Топография NAVY BLUE"',
-    price: 4500,
-    images: ["https://ext.same-assets.com/615341754/3835176787.jpeg"],
-    description: 'Новая футболка из коллекции "Топография" в цвете Navy Blue',
-    details: "Оверсайз\n100% хлопок",
+    name: "ATK Flexiband Small",
+    price: 990,
+    images: ["https://ext.same-assets.com/615341754/333363867.jpeg"],
+    description:
+      "Тканевая резинка ATK Flexiband размера Small — разработана для пользователей ростом до 160 см.",
+    details: "Размер: Small\nМатериал: ткань с латексной нитью\nАнтискользящая внутренняя сторона",
   },
   {
     id: "3",
-    name: 'Футболка "Синтем Орнамент"',
-    price: 4500,
-    images: ["https://ext.same-assets.com/615341754/3211665750.jpeg"],
-    description: 'Футболка с орнаментом из коллекции "Синтем"',
-    details: "Оверсайз\n100% хлопок",
+    name: "ATK Flexiband Medium",
+    price: 990,
+    images: ["https://ext.same-assets.com/615341754/333363867.jpeg"],
+    description:
+      "Резинка размера Medium — универсальный размер для большинства пользователей (рост 160–180 см).",
+    details: "Размер: Medium\nМатериал: ткань с латексной нитью\nУровень сопротивления: средний",
   },
   {
     id: "4",
-    name: 'Футболка "Grozny Map 1.0 NAVY BLUE"',
-    price: 4500,
-    images: ["https://ext.same-assets.com/615341754/1365574751.jpeg"],
-    description: "Футболка с картой города Грозный",
-    details: "Оверсайз\n100% хлопок",
+    name: "ATK Flexiband Large",
+    price: 990,
+    images: ["https://ext.same-assets.com/615341754/333363867.jpeg"],
+    description:
+      "Размер Large подходит для пользователей выше 180 см. Отлично подойдёт для растяжки и силовых тренировок.",
+    details: "Размер: Large\nМатериал: ткань с латексной нитью\nАнтискользящая поверхность",
+  },
+  {
+    id: "5",
+    name: "ATK ProTube System",
+    price: 2790,
+    images: ["https://ext.same-assets.com/615341754/333363867.jpeg"],
+    description:
+      "Трубчатая система сопротивления с ручками, креплениями и дверным якорем. Подходит для тренировок на всё тело.",
+    details:
+      "Комплектация: 5 трубок с разным сопротивлением, 2 ручки, 2 лямки на ноги, якорь для двери\nМатериал: латекс, нейлон, пластик",
   },
 ];
 
