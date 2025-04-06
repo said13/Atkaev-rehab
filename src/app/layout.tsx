@@ -10,8 +10,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Boomzi",
-  description: "Магазин уличной одежды / FROM CHECHENIA",
+  title: "Atkaev REHAB",
+  description: "Магазин фитнес аксессуаров",
 };
 
 export default function RootLayout({
