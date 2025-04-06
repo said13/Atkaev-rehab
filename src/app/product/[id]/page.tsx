@@ -1,3 +1,4 @@
+import PageLayout from "@/components/layout/page-layout";
 import ProductDetail from "@/components/product/product-detail";
 import { products } from "@/data/products";
 import { notFound } from "next/navigation";
@@ -17,5 +18,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     notFound();
   }
 
-  return <ProductDetail product={product} />;
+  return (
+    <PageLayout>
+      <ProductDetail product={product} />
+    </PageLayout>
+  )
 }
